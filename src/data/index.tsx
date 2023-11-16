@@ -64,21 +64,21 @@ export const paslonPresiden = [
         id:1,
         nama:"anies Baswedan",
         vote:78,
-        akumulasi:45,
+        akumulasi:35,
         image:"https://img.freepik.com/free-photo/confident-stylish-handsome-young-businessman-adjusting-necktie-looking-camera_1262-14183.jpg?size=626&ext=jpg&ga=GA1.1.196851547.1700034503&semt=ais"
     },
     {
         id:2,
         nama:"prabowo subianto",
         vote:106,
-        akumulasi:75,
+        akumulasi:45,
         image:"https://img.freepik.com/free-photo/portrait-joyful-young-man-white-shirt_171337-17467.jpg?size=626&ext=jpg&ga=GA1.1.196851547.1700034503&semt=ais"
     },
     {
         id:3,
         nama:"ganjar pranowo",
         vote:48,
-        akumulasi:30,
+        akumulasi:20,
         image:"https://img.freepik.com/free-photo/business-man-handsome-cute-guy-grey-office-suit_140725-161962.jpg?size=626&ext=jpg&ga=GA1.1.196851547.1700034503&semt=ais"
     }
 ]
@@ -93,7 +93,7 @@ type Login = {
 
 export const dataLogin: Login = {
     isLogin: true,
-    username: "test",
+    username: "dian herdiana",
     role:"admin"
 }
 

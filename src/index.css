@@ -4,9 +4,21 @@
 
 .content {
  animation: slideDown 0.2s ease forwards;
-
+}
+.modalVoteAnimate{
+  animation: slideUp 1s ease forwards;
 }
 
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
 @keyframes slideDown {
 0%{
     opacity: 1;

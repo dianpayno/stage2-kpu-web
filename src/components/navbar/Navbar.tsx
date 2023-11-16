@@ -66,16 +66,14 @@ function NavList() {
                  { hoveredItem && <div style={overlay} onMouseEnter={() => setHoveredItem(false)}></div> }
               <div style={TooltipProfile} className="content bg-[#F8F7F3] rounded-b-lg rounded-tl-lg px-4 py-5">
                 <div className="flex items-center gap-2 mb-5">
-                <img className="w-[70px] rounded-full" src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671165.jpg?size=626&ext=jpg&ga=GA1.1.714462566.1697981532&semt=ais" alt="kpu" />
-                <div>
-                  
-                </div>
+                <img className="w-[50px] rounded-full" src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671165.jpg?size=626&ext=jpg&ga=GA1.1.714462566.1697981532&semt=ais" alt="kpu" />
+                <div className="flex flex-col">
                 <p className="text-sm font-bold capitalize">{dataLogin.username}</p>
-                
+                <p className="text-xs font-bold text-blue-gray-500 uppercase">{dataLogin.role}</p>
                 </div>
-                
-
-
+                </div>
+                <p className="text-xs uppercase font-semibold">pemilu presiden dumbways.id</p>
+                <p className="text-xs font-semibold capitalize text-blue-gray-700">mari wujudkan pemilu 2024 dengan jujur dan berintegritas</p>
                 <Link to={"/voting"}>
                 <ButtonElement type="button" text="Logout" style="primary"/>
                 </Link>

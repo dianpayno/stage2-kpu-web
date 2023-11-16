@@ -2,7 +2,7 @@ type buttonProps = {
     text:string
     style:string
     type?:"submit" | "button"
-    onGetEvent?: () => void
+    onGetEvent?:() => void
 }
 
 const ButtonElement = (props: buttonProps) => {
