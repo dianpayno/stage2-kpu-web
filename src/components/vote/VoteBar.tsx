@@ -4,7 +4,7 @@ type VotebarProps = {
         nama:string,
         vote:number,
         image:string,
-        akumulasi:number
+      
     }
 
 }
@@ -26,7 +26,7 @@ const VoteBar = (props:VotebarProps) => {
                     </div>
                     <div className="uppercase text-2xl font-bold text-[#5E0000]">
                         <p className="text-[#5E0000]">{dataPaslon.nama}</p>
-                        <p>{dataPaslon.akumulasi} %</p>
+                        <p>{(dataPaslon.vote/1000)*100} %</p>
                     </div>
                     </div>
   )

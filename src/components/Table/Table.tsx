@@ -4,13 +4,12 @@
     Typography,
     Button,
     CardBody,
-
     Avatar,
     IconButton,
    
   } from "@material-tailwind/react";
    
- 
+ import { useState } from "react";
   const TABLE_HEAD = ["Nomor", "Nama", "alamat", "jenis kelamin", "pilihan"];
    
   const TABLE_ROWS = [
@@ -89,6 +88,9 @@
   ];
 
 const Table = () => {
+ 
+
+
   return (
     <div className="container px-10 mb-7 shadow bg-[ #F8F7F3] rounded">
     

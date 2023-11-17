@@ -45,13 +45,13 @@ function NavList() {
     return (
       <>
       <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-9">
-              <Link to={"/partai"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">partai</Link>
-              <Link to={"/paslon"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">paslon</Link>
+              <Link to={"/paslon"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">peserta pemilu</Link>
+              <Link to={"/voting"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">voting</Link>
               {
-                dataLogin.role === "admin"? <Link to={"/"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">home</Link>
+                dataLogin.role === "admin"? <Link to={"/dashboard-admin"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">Dashboard</Link>
                 
                 : 
-                <Link to={"/voting"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">voting</Link>
+               null
                 
               }
               
@@ -75,7 +75,7 @@ function NavList() {
                 <p className="text-xs uppercase font-semibold">pemilu presiden dumbways.id</p>
                 <p className="text-xs font-semibold capitalize text-blue-gray-700">mari wujudkan pemilu 2024 dengan jujur dan berintegritas</p>
                 <Link to={"/voting"}>
-                <ButtonElement type="button" text="Logout" style="primary"/>
+                <ButtonElement type="button" text="Logout" style="secondary"/>
                 </Link>
                 
                 </div>
@@ -133,17 +133,10 @@ function NavList() {
           className="mr-4 cursor-pointer py-1.5 uppercase flex items-center gap-2"    
         >
         <TbSquareLetterD/>
-        {
-          dataLogin.role === "admin"?(
-            <Link to={"/dashboard-admin"}>
-            <span className="text-sm ms-1">dashboard admin pemilu</span>
-            </Link>
-          ):(
+        
             <Link to={"/"}>
             <span className="text-sm ms-1">pemilu presiden dumbways.id</span>
             </Link>
-          )
-        }
         
         </Typography>
         

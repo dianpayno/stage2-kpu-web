@@ -4,7 +4,7 @@ type PaslonCardprops = {
      nama: string,
      image: string,
      vote: number   
-     akumulasi: number
+    
     }
   result:boolean
 }
@@ -30,7 +30,7 @@ const PaslonCard = (props:PaslonCardprops) => {
                             <div>
 
                               <p className="text-white uppercase text-xs font-bold text-center">Vote : {paslonPresiden.vote} suara</p>
-                              <p className="text-white uppercase text-xs font-bold text-center">akumulasi : {paslonPresiden.akumulasi}%</p>
+                              <p className="text-white uppercase text-xs font-bold text-center">akumulasi : {(paslonPresiden.vote/1000)*100} %</p>
                             </div>
                           ):null
                         }

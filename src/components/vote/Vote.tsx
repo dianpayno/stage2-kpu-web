@@ -1,18 +1,25 @@
-import { useState } from "react"
+import { useState} from "react"
 import VoteBar from "./VoteBar"
 import { paslonPresiden } from "../../data"
 import PaslonCard from "../card/PaslonCard"
 import ButtonElement from "../login/ButtonElement"
 import {IoCloseCircle} from "react-icons/io5"
-import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js"
+import PieChart from "./Pie"
+
+
 
 
 const Vote: React.FC = () => {
 const [openModal, setOpenModal] = useState(true)
 const [voteModal, setVoteModal] = useState(false)
+const [vote, setVote] = useState(false)
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+
+  const handleVote = () => {
+    setVote(true)
+    setVoteModal(false)
+  }
+
 const newData = paslonPresiden.map((item)=>{
   return {
     ...item,
@@ -33,38 +40,17 @@ const overlayModal: React.CSSProperties = {
   zIndex: "900",
 }
 
-const data = {
-  labels: ["Anis", "Prabowo", "Ganjar"],
-  datasets: [
-    {
-      data: [paslonPresiden[0].akumulasi, paslonPresiden[1].akumulasi, paslonPresiden[2].akumulasi],
-      backgroundColor: ['#FF6384', '#FFCD56', '#36A2EB'],
-      hoverBackgroundColor: ['#FF6384', '#FFCD56', '#36A2EB'],
-    
-    }
-  ],
- 
-}
 
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
-         <p className="uppercase text-2xl mb-3 font-bold text-[#5E0000]">info pemilu terupdate</p>
-         <div className="flex justify-around items-center gap-3">
-            
-         <div className="w-full">
-          <Pie data={data} />
-          </div>
-
+         <p className="uppercase text-2xl font-bold text-[#5E0000]">info pemilu terupdate</p>
+         {vote &&  <p className="uppercase text-xl font-bold text-[#5E0000]">terima kasih anda sudah memilih</p>}
+        
+         <div className="flex justify-around mt-3 items-center gap-3">
+            <PieChart/> 
             <div className="w-full">
-                 {  
-                    sortedData.map((item)=>{
-                        return (
-                            <VoteBar key={item.id} dataPaslon={item}/>
-                        )
-                    })
-                 }       
-                
+                 { sortedData.map((item)=>{ return(<VoteBar key={item.id} dataPaslon={item}/>)})}       
             </div>
          </div>
          {
@@ -77,21 +63,21 @@ const data = {
                 <p className="text-sm mb-2">Silahkan klik vote untuk memilih</p>
             </div>
             <div  className="grid lg:grid-cols-3 gap-4 items-center lg:px-12 relative">
-                {
-                    paslonPresiden.map((paslon, index) => (
-                      <div className="flex flex-col gap-16">
-                        <PaslonCard key={index} paslonPresiden={paslon} result={openModal}/>
-                        <ButtonElement  type="button" text="Vote" style="primary"/>
+                {paslonPresiden.map((paslon, index) => (
+                      <div key={index} className="flex flex-col gap-16">
+                        <PaslonCard  paslonPresiden={paslon} result={openModal}/>
+                        <ButtonElement  onGetEvent={handleVote}  type="button" text="Vote" style="primary"/>
                       </div>
-                      
-                    ))
-                }
+                    ))}
             </div>
           </div>
          </div>
             )
          }
-         <ButtonElement type="button" text="masukan suaramu" style="primary" onGetEvent={()=>setVoteModal(true)}/>
+         {!vote &&<ButtonElement type="button" text="masukan suaramu" style="primary" onGetEvent={()=>setVoteModal(true)}/>}
+
+         
+          
     </div>
   )
 }
