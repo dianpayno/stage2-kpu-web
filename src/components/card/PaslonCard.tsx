@@ -6,7 +6,7 @@ type PaslonCardprops = {
      vote: number   
     
     }
-  result:boolean
+  result?:boolean
 }
 
 const PaslonCard = (props:PaslonCardprops) => {

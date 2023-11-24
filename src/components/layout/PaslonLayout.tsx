@@ -1,10 +1,17 @@
 import TablePalon from "../Table/TableCapres"
 import { useState } from "react";
 import ButtonElement from "../login/ButtonElement";
+import AddPaslonModal from "../card/AddPaslonModal";
 
 
 const PaslonLayout = () => {
-    const [hoveredItem, setHoveredItem] = useState(false);
+    const [hoveredItem, setHoveredItem] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
+
+    const openModalHandler = () => {
+        setOpenModal(false);
+    }
+    
   return (
     <div>
         <div className="flex justify-center items-center mt-20">
@@ -12,8 +19,10 @@ const PaslonLayout = () => {
         <div className="pt-9 flex items-center justify-between">
         <p className="uppercase text-2xl font-bold text-[#5E0000]">daftar list peserta pemilu 2024-2029</p>
         {
-            hoveredItem?<ButtonElement text="add paslon" style="secondary" />:<ButtonElement text="add partai" style="secondary"/>
+            hoveredItem?<ButtonElement text="add paslon" style="secondary" onGetEvent={() => setOpenModal(true)} />:<ButtonElement text="add partai" style="secondary" onGetEvent={() => setOpenModal(true)}/>
         }
+        
+          
         
         
         </div> 
@@ -32,6 +41,8 @@ const PaslonLayout = () => {
           </div>
          
         </div>
+        {openModal && <AddPaslonModal typeModal={hoveredItem} openModal={openModalHandler} />}
+        
     </div>
   )
 }

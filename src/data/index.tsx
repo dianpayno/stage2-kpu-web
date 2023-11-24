@@ -112,8 +112,8 @@ type Login = {
 
 export const dataLogin: Login = {
     isLogin: true,
-    username: "dian herdiana",
-    role:"admin"
+    username: null,
+    role:null
 }
 
 // ===================================================================== Data table voter ======================================================================
@@ -187,3 +187,6 @@ export const listPartai = [
 
 
 ]
+
+
+export const countDownDuration = 30 * 24 * 60 * 60 * 1000;

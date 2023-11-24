@@ -1,50 +1,49 @@
-import {
 
-    Dialog,  
-  } from "@material-tailwind/react";
-
-import{useEffect, useState} from "react";
 import InputElement from "../login/InputElement";
 import ButtonElement from "../login/ButtonElement";
-import RegisterModal from "./RegisterModal";
 import {IoCloseCircle} from "react-icons/io5";
 
-const LoginModal = () => {
-    const [open, setOpen] = useState<boolean>(false);
-    const handleOpen = () => setOpen((cur: boolean) => !cur);
+
+type loginProps = {
+  handleModal : () => void;
+}
+
+const LoginModal = (props: loginProps) => {
+  
+  const {handleModal} = props
+
     
   return (
-    <div>
-        <ButtonElement onGetEvent={handleOpen} text="login" style="secondary"/>
-      <Dialog
-        size="xs"
-        open={open}
-        handler={handleOpen}
-        className="bg-transparent shadow-none"
-      >
-        <div className="mx-auto text-[#5C0303] w-full max-w-[24rem] bg-white px-6 py-8 rounded-lg">
+   
+        <div className=" text-[#5C0303] lg:w-[30%] bg-white px-6 py-6 rounded relative">
             <div>
-                <p className="text-2xl font-bold capitalize mb-3">login</p>
+                <p className="text-xl font-bold capitalize mb-5">login</p>
             </div>
             <form>
             <InputElement type="text" name="username" placeholder="masukan username"/>
             <InputElement type="password" name="password"/>
-            <ButtonElement text="login" type="submit" style="primary"/>
+            <ButtonElement text="login" type="button" style="secondary"/>
             </form>
             <div className="flex justify-center items-center mt-2 relative">
-            <button className="capitalize text-xs z-10 ">
-                belum memiliki akun? 
-            </button>
-            <RegisterModal/>
+            <p className="text-xs z-10 capitalize">
+                Belum memiliki akun? klik register
+            </p>
             </div>
-            <button onClick={handleOpen} className="absolute top-2 right-20">
-                <IoCloseCircle/>
-            </button>
-            
-        </div>
-      </Dialog>
+            <IoCloseCircle
+        onClick={handleModal}
+        className="
+        absolute
+        top-1
+        right-1
+        text-3xl
+        text-[#5C0303]
+        "/>
 
-    </div>
+            
+           
+            
+       
+        </div>
   )
 }
 

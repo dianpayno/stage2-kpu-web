@@ -3,7 +3,7 @@
 const Jumbotron = () => {
   return (
   
-        <div className='w-full flex justify-center items-center pt-[6rem] pb-[2.3rem]
+        <div className='w-full flex justify-center items-center pt-[5.3rem] pb-[1.3rem]
         bg-gradient-to-l from-[#fff] from-30% to-[#7506068A] rounded-b-xl
         '>
             <div className='relative bg-gradient-to-l from-[#5C0303] from-50% to-[#7506068A] container h-[400px] rounded-xl'>

@@ -8,17 +8,33 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { TbSquareLetterD } from "react-icons/tb";
+import {IoCloseCircle} from "react-icons/io5";
 import LoginModal from "../layout/LoginModal";
-import { dataLogin } from "../../data";
+// import { dataLogin } from "../../data";
 import ButtonElement from "../login/ButtonElement";
 import { useState } from "react";
+import { overlayModal } from "../vote/Vote";
+import RegisterModal from "../layout/RegisterModal";
+
 
 
 function NavList() {
  const [hoveredItem, setHoveredItem] = useState(false);
+ const [LoginModalOpen, setLoginModalOpen] = useState(false);
+ const [RegisterModalOpen, setRegisterModalOpen] = useState(false);
+ const [dataLogin, setdataLogin] = useState({
+  isLogin:false,
+  username:null || "",
+  role:null || ""
 
-
+ });
+ const handleModal = ()=>{
+  setLoginModalOpen(!LoginModalOpen)
  
+ }
+ const handleModalRegister = ()=>{
+  setRegisterModalOpen(!RegisterModalOpen)
+ }
 
     const TooltipProfile:any = {
         display: hoveredItem? "block" : "none",
@@ -48,12 +64,7 @@ function NavList() {
               <Link to={"/paslon"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">peserta pemilu</Link>
               <Link to={"/voting"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">voting</Link>
               {
-                dataLogin.role === "admin"? <Link to={"/dashboard-admin"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">Dashboard</Link>
-                
-                : 
-               null
-                
-              }
+                dataLogin.role === "admin"? <Link to={"/dashboard-admin"} className="flex items-center text-xs font-semibold uppercase hover:text-[#5C0303]">Dashboard</Link>:null}
               
               { 
             dataLogin.isLogin?(
@@ -99,11 +110,23 @@ function NavList() {
             
             </>
           ):(
-            <LoginModal/>
-          )
-        }
-      
+            <div className="flex items-center gap-2">
+              <ButtonElement type="button" text="Login" style="secondary" onGetEvent={() => setLoginModalOpen(true)}/>
+              <ButtonElement type="button" text="register" style="base" onGetEvent={() => setRegisterModalOpen(true)}/>
+            </div>)}
       </ul>
+      {LoginModalOpen && 
+      <div style={overlayModal} className="relative flex justify-center items-center z-20" >
+        <LoginModal handleModal={handleModal} />
+        
+      </div>
+      }
+      {RegisterModalOpen && 
+      <div style={overlayModal} className="relative flex justify-center items-center z-20" >
+        <RegisterModal handleModal={handleModalRegister} />
+       
+      </div>
+      }
      
       </>
     );

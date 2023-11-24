@@ -30,15 +30,7 @@ const sortedData = newData.sort((a,b)=>{
   return b.vote - a.vote
 })
 
-const overlayModal: React.CSSProperties = {
-  position: "fixed",
-  top: "0",
-  left: "0",
-  right: "0",
-  bottom: "0",
-  backgroundColor: "rgba(0, 0, 0, 0.8)",
-  zIndex: "900",
-}
+
 
 
 
@@ -85,3 +77,13 @@ const overlayModal: React.CSSProperties = {
 
 
 export default Vote
+
+export const overlayModal: React.CSSProperties = {
+  position: "fixed",
+  top: "0",
+  left: "0",
+  right: "0",
+  bottom: "0",
+  backgroundColor: "rgba(0, 0, 0, 0.8)",
+  zIndex: "900",
+}

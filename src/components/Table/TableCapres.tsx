@@ -22,6 +22,9 @@ const {hoveredItem} = props
 
 const  [currentPage, setCurrentPage] = useState(1);
 
+
+
+
 const rowPerPage = 3;
 const lastIndex = currentPage * rowPerPage;
 const firstIndex = lastIndex - rowPerPage;
@@ -179,8 +182,10 @@ const prevPage = () => {
        <div>
        <Typography variant="small" color="blue-gray" className="font-normal mt-3">Page {currentPage} of {totalPage}</Typography>
         <div className="flex gap-2 justify-end pb-4">
-       <ButtonElement type="button" style="secondary"  text="Previous" onGetEvent={prevPage}/>
-       <ButtonElement type="button" style="secondary"  text="Next" onGetEvent={nextPage}/>
+        {1 === currentPage ?null:<ButtonElement type="button" style="secondary"  text="Previous" onGetEvent={prevPage}/>}
+        {currentPage === totalPage?null:<ButtonElement type="button" style="secondary"  text="Next" onGetEvent={nextPage}/>}
+       
+       
         </div>
        </div>
 }
