@@ -1,16 +1,20 @@
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js"
 import { Pie } from "react-chartjs-2";
-import { paslonPresiden } from "../../data/index"
 
-const PieChart = () => {
+type PieChartProps = {
+  dataResult:any
+}
+
+const PieChart = (props:PieChartProps) => {
+  const {dataResult} = props
 ChartJS.register(ArcElement, Tooltip, Legend);
 const data = {
-    labels: paslonPresiden.map((item) => item.nama),
+    labels: dataResult?.map((item:any) => item.paslon_name),
     datasets: [
       {
-        data: paslonPresiden.map((item) => (item.vote/1000)*100),
-        backgroundColor: ['#FF6384', '#FFCD56', '#36A2EB'],
+        data: dataResult?.map((item:any) => item.jml_pemilih),
+        backgroundColor: ['#FFCD56','#FF6384','#36A2EB'],
         hoverBackgroundColor: ['#FF6384', '#FFCD56', '#36A2EB'],
       
       }
@@ -18,8 +22,8 @@ const data = {
   }
   return (
   
-        <div className="w-full">
-          <Pie data={data} />
+        <div className="relative">
+          <Pie data={data}  />
           </div>
 
    

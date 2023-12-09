@@ -1,5 +1,6 @@
 
 
+import Footer from "../components/footer/Footer"
 import VotingLayout from "../components/layout/VotingLayout"
 import Navbarmenu from "../components/navbar/Navbar"
 
@@ -10,11 +11,7 @@ const VotingPage = () => {
     <div>
         <Navbarmenu/>
         <VotingLayout/>
-      
-        
-      
-       
-       
+        <Footer/>
     </div>
   )
 }

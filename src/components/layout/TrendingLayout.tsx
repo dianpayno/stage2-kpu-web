@@ -1,8 +1,11 @@
-import BigCard from "../card/Newscard"
+
 import { dataTrending } from "../../data"
 import {useState, useEffect} from "react"
 import CountDown from "../Banner/CountDown"
 import { countDownDuration } from "../../data"
+import NewsCard from "../card/Newscard"
+import { useNews } from "../../services/context/newscontex"
+
 
 
 
@@ -10,7 +13,10 @@ import { countDownDuration } from "../../data"
 const CardLayout = () => {
     const [scrolled500, setScrolled500] = useState(false)
     const [scrolled800, setScrolled800]= useState(false)
+    const [news,]= useNews()
     
+
+    console.log(news);
     
     useEffect(() => {
         const handleScroll = () => {
@@ -69,9 +75,9 @@ const CardLayout = () => {
     <div className="flex justify-around">
             <div className="w-[85%] grid grid-cols-3 gap-4 mb-7"> 
             {
-                dataTrending.map((item, index) => (
+                news?.map((item:any, index:number) => (
                 
-                    <BigCard key={item.id} dataTrending={item} index={index}/>
+                    <NewsCard key={index} data={item} index={index}/>
                     
                 ))
             }

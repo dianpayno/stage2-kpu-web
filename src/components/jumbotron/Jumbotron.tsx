@@ -1,6 +1,7 @@
 
-
 const Jumbotron = () => {
+
+
   return (
   
         <div className='w-full flex justify-center items-center pt-[5.3rem] pb-[1.3rem]

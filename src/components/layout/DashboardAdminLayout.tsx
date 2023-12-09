@@ -1,13 +1,42 @@
-import { paslonPresiden } from "../../data"
-import Table from "../Table/Table"
+
+import Table from "../Table/TableVoters"
 import PaslonCard from "../card/PaslonCard"
 import { useEffect } from "react"
+import { useQuery } from "react-query"
+import { userApi } from "../../services/api/userapi"
+
 
 
 const DashboardAdminLayout = () => {
+
+  const {data:resultCount} = useQuery('resultCount',async()=>{
+    try{
+     const token = localStorage.getItem('token')
+     const headers = {
+       "Authorization": `Bearer ${token}`
+     }
+     const response = await userApi.get('/count', {headers})
+     return  response.data
+    } catch(err){
+      console.log(err)
+    }
+   })
+  
+   const newData = resultCount?.data?.map((item:any)=>{
+    return {
+      ...item,
+      nomer_urut: item.nomer_urut
+    }
+  })
+   const sortedBanner = newData?.sort((a:any,b:any)=>{
+    return a.nomer_urut - b.nomer_urut
+   })
+
   useEffect(() => {
    document.title = "Dashboard Admin | KPU Dumbways"
   }, [])
+
+
   return (
     <div>
         <div className="w-full flex items-center justify-center mt-28">
@@ -16,8 +45,8 @@ const DashboardAdminLayout = () => {
         
         <div className="grid lg:grid-cols-3 gap-4 items-center mt-8 lg:px-20">
            {
-               paslonPresiden.map((paslon, index) => (
-                   <PaslonCard key={index} paslonPresiden={paslon}/>
+               sortedBanner?.map((paslon:any, index:any) => (
+                   <PaslonCard key={index} data={paslon} result={false}/>
                ))
            } 
         </div>
